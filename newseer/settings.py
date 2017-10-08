@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'newseer.urls'
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'newseer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'book1/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +69,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'newseer.wsgi.application'
 
@@ -114,7 +119,15 @@ USE_L10N = True
 USE_TZ = True
 
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = (
+    STATIC_PATH,
+    'C:/Users/long/workspace/newseer.git/trunk/book1/static',
+)
+SITE_PAGES_DIRECTORY  = os.path.join(BASE_DIR, 'book1/templates/page')

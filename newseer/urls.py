@@ -20,4 +20,5 @@ import book1
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^book1/', include('book1.urls')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]
